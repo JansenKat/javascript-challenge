@@ -1,29 +1,12 @@
-// from data.js
-const tableData = data;
 
 const input = d3.select("input")
 const button = d3.select("button")
-const table = d3.select("body").append("table")
-
-// YOUR CODE HERE!
 const handler = function(){
 
     let filterCond = input.property("value")
+    const tbody = d3.select("tbody")
   
-    table.html("")
-    
-    const headerRow = table.append("thead").append("tr")
-    headerRow.append("th").text("date/time")
-    headerRow.append("th").text("city")
-    headerRow.append("th").text("state")
-    headerRow.append("th").text("country")
-    headerRow.append("th").text("shape")
-    headerRow.append("th").text("duration")
-    headerRow.append("th").text("comment")
-  
-    const tbody = table.append("tbody")
-  
-    data.filter(dataRow => dataRow.datetime === filterCond).forEach(dataRow => {
+    data.filter(dataRow => dataRow.datetime === input.property('value')).forEach(dataRow => {
       let row = tbody.append("tr")
       row.append("td").text(dataRow.datetime)
       row.append("td").text(dataRow.city)
@@ -35,6 +18,4 @@ const handler = function(){
     })
   }
 
-
-  input.on("change", handler)
   button.on("click", handler)
