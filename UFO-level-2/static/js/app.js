@@ -5,15 +5,25 @@ const countryInput = d3.select("input #country")
 const shapeInput = d3.select("input #shape")
 
 const button = d3.select("button")
+
 const handler = function(){
 
-    const tbody = d3.select("tbody")
+    let dateCond = dateInput.property("value")
+    let cityCond = cityInput.property("value")
+    let stateCond = stateInput.property("value")
+    let countryCond = countryInput.property("value")
+    let shapeCond = shapeInput.property("value")
+
+    const table = d3.select("table")
+    
+    d3.select("tbody").remove()
+    const tbody = table.append('tbody')
   
-    data.filter(dataRow => dataRow.datetime === dateInput.property('value'))\
-        .filter(dataRow => dataRow.city === cityInput.property('value'))\
-        .filter(dataRow => dataRow.state === stateInput.property('value'))\
-        .filter(dataRow => dataRow.country === countryInput.property('value'))\
-        .filter(dataRow => dataRow.shape === shapeInput.property('value'))
+    data.filter(dataRow => dataRow.datetime === dateCond { !dateInput.empty() })\
+        .filter(dataRow => dataRow.city === cityCond { !cityInput.empty() })\
+        .filter(dataRow => dataRow.state === stateCond { !stateInput.empty() })\
+        .filter(dataRow => dataRow.country === countryCond { !countryInput.empty() })\
+        .filter(dataRow => dataRow.shape === shapeCond { !shapeInput.empty() })
         .forEach(dataRow => {
             let row = tbody.append("tr")
             row.append("td").text(dataRow.datetime)
