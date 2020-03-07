@@ -2,7 +2,8 @@ const input = d3.select("input")
 const button = d3.select("button")
 
 const handler = function(){
-
+  
+  d3.event.preventDefault()
     const table = d3.select("table")
     
     d3.select("tbody").remove()
