@@ -8,6 +8,8 @@ const button = d3.select("button")
 
 const handler = function(){
 
+    d3.event.preventDefault()
+
     let dateCond = dateInput.property("value")
     let cityCond = cityInput.property("value")
     let stateCond = stateInput.property("value")
@@ -36,4 +38,9 @@ const handler = function(){
         })
   }
 
-  button.on("click", handler)
+dateInput.on("change", handler)
+cityInput.on("change", handler)
+stateInput.on("change", handler)
+countryInput.on("change", handler)
+shapeInput.on("change", handler)
+button.on("click", handler)
